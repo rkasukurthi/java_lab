@@ -1,0 +1,92 @@
+Design Pattern
+
+Creational 
+
+Abstract Factory
+Builder
+Factory Method
+Prototype 
+Singleton
+
+Strutural
+
+Adapter
+Bridge 
+Composite
+Decorator
+Facade
+Flyweight
+Proxy
+
+
+Behavioral 
+
+
+
+
+
+
+
+
+
+
+
+
+h1. Factory Method
+
+The essence of the Factory method Pattern is to "Define an method to create a object, then let the subclasses decide which class to instantiate by overwriting that method. The Factory method lets a class defer instantiation to a subclasses."
+
+
+Factory Method is only abstract the creational method, so the subclass can implements the method, this is like the template pattern. For example the main.class has a method create(), then every sub.class inheritance main.calss, the overwrite 
+ 
+Abstract Factory actually it abstract The Factory Class. So the main.class has compostion of Factory.class. not just a method.
+
+It's just another layer of abstraction.
+
+h1. Abstract Factory
+
+
+Template pattern vs Strategy Pattern
+
+similar is the difference between template pattern and Strategy Pattern.
+one is on the method level. on is one the class level.
+
+Build pattern and Template Pattern
+
+Build belong to create object. Template pattern belong to Structual Pattern
+
+
+
+Builder vs. Abstract Factory
+
+The factor pattern defers the choice of what concrete type of object to 
+make until run time. E.g. going to a restaurant to order the special of 
+the day.  The waiter is the interface to the factory that takes the 
+abstractor generic message "Get me the special of the day!" and returns 
+the concrete product (i.e Liver souffle or Chicken caramel) 
+
+The builder pattern encapsulates the logic of how to put together a 
+complex object so that the client just requests a configuration and the 
+builder directs the logic of building it.   E.g The main contractor 
+(builder) in building a house knows, given a floor plan, knows how to 
+execute the sequence of operations (i,e. by delegating to subcontractors) 
+needed to build the complex object.  If that logic was not encapsulated in 
+a builder, then the buyers would have to organize the subcontracting 
+themselves ("Dear, shouldn't we have asked for the foundation to be laid 
+before the roofers showed up?") 
+
+
+The factory is concerned with what is made, the builder with how it is 
+made.  Design patterns points out that (page 105) Abstract factory is 
+similar to builder in that it too may construct complex objects.  The 
+primary difference is that the Builder pattern focuses on constructing a 
+complex object step by step.  Abstract factor's emphasis is on families of 
+product objects(either simple or complex).  Builder returns the product as 
+the final step, but as far as the Abstract Factory is concerned, the 
+product gets returned immediately 
+
+Why Decorate, not inheritance ?
+
+The idea inside the Decorator Pattern are similar to the 
+
+

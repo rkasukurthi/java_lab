@@ -20,7 +20,7 @@ package pattern.template;
  *  
  *  
  * @author zluo
- *
+
  */
 
 public abstract class Generalization 
