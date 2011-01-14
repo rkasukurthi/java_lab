@@ -7,11 +7,19 @@ package pattern.creational.singleton;
 
 public class SingletonExample1 {
 	
-	private static SingletonExample1 = new SingletonExample1();
+	private static SingletonExample1 instance = new SingletonExample1();
 	
+	/**
+	 * make the contructor private, prevent instance creating from using the new keyword.
+	 */
+	private SingletonExample1() {
+		super();
+	}
+
+
 	static public SingletonExample1 getInstance()
 	{
-		
+		return instance;
 	}
 
 }
