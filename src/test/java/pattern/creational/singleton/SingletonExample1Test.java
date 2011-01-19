@@ -4,6 +4,11 @@ import junit.framework.TestCase;
 
 public class SingletonExample1Test extends TestCase{
 
+	public SingletonExample1Test(String name) {
+		super(name);
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * This test case will test the instnace get from the singleton pattern are the same object.
 	 */
