@@ -7,6 +7,11 @@ import junit.framework.TestCase;
 
 public class MapTest extends TestCase {
 
+public MapTest(String name) {
+		super(name);
+		// TODO Auto-generated constructor stub
+	}
+
 /**
  * HashSet is a special use of HashMap, it use the item as the HashMap's key.
  * 

@@ -137,10 +137,11 @@ public class SortItem extends java.applet.Applet implements Runnable {
     public void init() {
 	String at = getParameter("alg");
 	if (at == null) {
-	    at = "BubbleSort";
+	    at ="QSort"	;
+//	    at = "BubbleSort";
 	}
 
-	algName = at + "Algorithm";
+	algName = "sort." + at + "Algorithm";
 	scramble();
 
 	resize(100, 100);
