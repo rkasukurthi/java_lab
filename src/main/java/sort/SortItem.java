@@ -144,7 +144,7 @@ public class SortItem extends java.applet.Applet implements Runnable {
 	algName = "sort." + at + "Algorithm";
 	scramble();
 
-	resize(100, 100);
+	resize(200, 200);
     }
 
     /**
