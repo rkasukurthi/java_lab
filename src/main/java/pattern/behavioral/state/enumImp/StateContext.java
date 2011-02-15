@@ -3,6 +3,9 @@ package pattern.behavioral.state.enumImp;
 /**
  * This example demonstrate State Pattern using 
  * The State pattern is a solution to the problem of how to make behavior depend on state.
+ * <p>
+ * <img src='StateContext.png'/>
+ * </p>
  * 
  * <li>Define a "context" class to present a single interface to the outside world.
  * <li>Define a State abstract base class. In this example, using enum define the abstract base class.
