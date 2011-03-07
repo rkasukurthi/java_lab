@@ -16,7 +16,7 @@ public class MailExample {
 		String host="demeter.silanis.com";
 		String from="zhanqing_luo@silanis.com";
 		String to="zhanqing_luo@silanis.com";
-		String cc="jinsong_tao@silanis.com";
+//		String cc="jinsong_tao@silanis.com";
 		
 		// Get System properties
 		Properties props=System.getProperties();
@@ -35,7 +35,7 @@ public class MailExample {
 
 		// Set the to address
 		message.addRecipient(Message.RecipientType.TO ,new InternetAddress(to));
-		message.addRecipient(Message.RecipientType.CC ,new InternetAddress(cc));
+//		message.addRecipient(Message.RecipientType.CC ,new InternetAddress(cc));
 		
 		// Set the subject
 		message.setSubject("Hello JavaMail 按照国家统计局的安排", "UTF-8");
@@ -49,5 +49,7 @@ public class MailExample {
 		System.out.println("-------The End-------");
 		
 	}
+	
+	
 	
 }
