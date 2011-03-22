@@ -109,7 +109,7 @@ public class InterpreterExample {
 	
 	public static void main(String[] args)
 	{
-		String expression =" w x z - +";
+		String expression ="w x z - + x + z -";
 		context.put("w", new Number(5));
 		context.put("x", new Number(10));
 		context.put("z", new Number(42));
@@ -118,5 +118,7 @@ public class InterpreterExample {
 		
 		System.out.println("Result is : " + result);
 	}
+	
+	
 }
  

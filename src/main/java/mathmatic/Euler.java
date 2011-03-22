@@ -2,7 +2,7 @@ package mathmatic;
 
 public class Euler {
 	/**
-	 * 
+	 * Emuler 
 	 * e =(1 + 1/n) power n
 	 * @param args
 	 */

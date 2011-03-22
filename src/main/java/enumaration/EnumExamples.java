@@ -124,10 +124,6 @@ public class EnumExamples {
    * What follows are various methods which exercise the above enums.
    * 
    */
-  
-  /**
- * 
- */
 private static void exerEnumsMiscellaneous()
   {
 	// toString method by default uses the identifier
@@ -194,7 +190,5 @@ private static void exerEnumsMiscellaneous()
 		  log("NORTH-SOUTH: " + direction);
 	  }
   }
-  
-  
   
 }
