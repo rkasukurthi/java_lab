@@ -26,6 +26,7 @@ public class DateDifferent {
    }
    static void dayLeft()
    {
+	    Calendar c = new GregorianCalendar(2009, 10, 19);
 	    Date d1 = new GregorianCalendar(2009, 10, 19).getTime();
 
 	    /** Today's date */
@@ -33,9 +34,12 @@ public class DateDifferent {
 
 	    // Get msec from each, and subtract.
 	    long diff = today.getTime() - d1.getTime();
+	    
+	    System.out.printf(" Today is %1$tb %1$te,%1$tY,%1$tA\n", today);
+	    System.out.printf(" Your goal was setup on %1$tb %1$te,%1$tY,%1$tA\n", c);
 
 	    System.out.println(" You Goal of SCEA (up to " + today + ") is only "
-	        + (1000- diff / (1000 * 60 * 60 * 24)) + " days left. Are you readY?");
+	    		+ (1000- diff / (1000 * 60 * 60 * 24)) + " days left. Are you readY?");
 	    
    }
 }

@@ -3,14 +3,33 @@ package pattern.behavioral.interpretor;
 import java.util.HashMap;
 import java.util.Stack;
 
+/**
+ * An Interpreter Example of parse reversed polish 
+ * 
+ * @author zluo
+ *
+ */
 public class InterpreterExample {
 	
+	// context
 	static HashMap<String,Expression> context= new HashMap<String,Expression>();
 	
+	/**
+	 *   
+	 * @author zluo
+	 *
+	 */
 	interface Expression{
 		public int interpret();
 	}
 
+	
+	/**
+	 * 
+	 * @author zluo
+	 *
+	 */
+	
 	static class Evaluator
 	{
 	  private Expression syntaxTree;

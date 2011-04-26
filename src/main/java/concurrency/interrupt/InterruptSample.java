@@ -1,5 +1,11 @@
 package concurrency.interrupt;
-
+/**
+ * 
+ * This class demontrate how sleep are interrupted.
+ * by explicitly call thread.interrupt();
+ * @author zluo
+ *
+ */
 public class InterruptSample implements Runnable {
 
 	public void run() {

@@ -9,7 +9,13 @@ import java.util.TreeSet;
 enum Explore {
 	HERE, THERE
 }
-
+/**
+ * values() is a static method added by compiler.
+ * there is also a valueOf() method added by compiler.
+ * run javap xxxEnum, you will see the enumeration is just a normal class. 
+ * another good thing is the enumeration support switch, (Do not include .class)
+ *
+ */
 public class ReflectionEnum {
 
 	public static Set<String> analyze(Class<?> enumClass) {

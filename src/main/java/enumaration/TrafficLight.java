@@ -1,7 +1,9 @@
 package enumaration;
 /**
  * This class uses an enum to create a little state machine.
- * enum can directly using switch
+ * enum can directly using switch 
+ * 
+ * 
  * adding duration
  * @author zluo
  *

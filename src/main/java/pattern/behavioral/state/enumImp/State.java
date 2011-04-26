@@ -37,6 +37,8 @@ public enum State {
     	
     };
 	
+    // definitions
+    
 	private String message;
     
 	private State(String message) {

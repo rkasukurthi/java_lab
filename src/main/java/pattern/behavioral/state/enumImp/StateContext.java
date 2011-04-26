@@ -2,7 +2,8 @@ package pattern.behavioral.state.enumImp;
 
 /**
  * This example demonstrate State Pattern using 
- * The State pattern is a solution to the problem of how to make behavior depend on state.
+ * The State pattern is a solution to the problem 
+ * of how to make behavior depend on state.
  * <p>
  * <img src='StateContext.png'/>
  * </p>
@@ -28,6 +29,9 @@ package pattern.behavioral.state.enumImp;
 public class StateContext {
   private State state=State.OFF;
   
+  /**
+   * Changing states 
+   */
   public void transition()
   {
 	  state=state.transitionState();
