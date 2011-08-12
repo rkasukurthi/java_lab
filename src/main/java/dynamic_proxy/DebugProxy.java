@@ -1,8 +1,18 @@
 package dynamic_proxy;
 /**
+ * 
+ * java.lang.reflect.Proxy class and
+ * java.lang.refelect.InvocationHandler make up the heart of Dynamic Proxy's 
+ * functionality.
+ * 
  * Example of Dynamic Proxy Class, kind of implements AOP.
  * 
+ * The class that can acheive the dynamic proxy, must be implement the interface base.
  * 
+ * Proxy classes are created using the static methods of the class java.lang.reflect.Proxy.
+ * 
+ * see this IBM tutorial
+ * http://www.ibm.com/developerworks/java/library/j-jtp08305/index.html
  */
 
 import java.lang.reflect.InvocationTargetException;
