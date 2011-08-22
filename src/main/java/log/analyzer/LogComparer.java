@@ -23,7 +23,10 @@ import org.apache.commons.math.stat.descriptive.rank.Percentile;
 /**
  * This class used to compare the same method time cost of two log files
  * 
- * 
+ * leaving(.)+ms
+ *C:/TEMP/JPMC_LOG/JPMC_2011_08_10_10DOC.log
+ *C:/TEMP/JPMC_LOG/JPMC_2011_08_18_10DOC.log
+ *C:/TEMP/JPMC_LOG/silanis_aix_10docs.log
  * 
  * @author zluo
  * 
