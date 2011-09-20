@@ -36,10 +36,9 @@ import org.apache.commons.math.stat.descriptive.moment.StandardDeviation;
 import org.apache.commons.math.stat.descriptive.rank.Percentile;
 
 /**
- * This class used to compare the same method time cost of two log files
- * 
- * leaving(.)+ms C:/TEMP/JPMC_LOG/JPMC_2011_08_10_10DOC.log
- * C:/TEMP/JPMC_LOG/JPMC_2011_08_18_10DOC.log
+ * This class generate AWS Sequence Diagram based on 
+ * leaving and entering logs. 
+ *
  * C:/TEMP/JPMC_LOG/silanis_aix_10docs.log
  * 
  * @author zluo
@@ -48,12 +47,21 @@ import org.apache.commons.math.stat.descriptive.rank.Percentile;
 
 public class LogAnalyzer {
 
+//	String[] dropList = {"SetAttributeAction.complete", 
+//			"AwsSOAPBindingImpl.getDocumentPageImage",
+//			"DocumentAction.complete",
+//			"AwsSOAPBindingImpl.getAutographImage"
+//			};
+	/**
+	 * 
+	 */
 	String[] dropList = {"SetAttributeAction.complete", 
-			"AwsSOAPBindingImpl.getDocumentPageImage",
+//			"AwsSOAPBindingImpl.getDocumentPageImage",
 			"DocumentAction.complete",
-			"AwsSOAPBindingImpl.getAutographImage"
-			};
-	String[] findList = { "AwsSOAPBindingImpl.getDocumentPageImage" };
+//			"AwsSOAPBindingImpl.getAutographImage"
+	};
+	String[] findList = {};
+//			"AwsSOAPBindingImpl.getDocumentPageImage" };
 	
 	Map<String, String> alaisMap= new HashMap<String,String>();
 	Map<String,String> DEMap= new HashMap<String,String>();
@@ -68,6 +76,7 @@ public class LogAnalyzer {
 	static StringBuilder csvFilebuilder= new StringBuilder();
 
 	private static final String PATH = "c:/temp/perf/";
+	private static String inputPath=null;
 	private static final String CSV_FILE = "result";
 
 	public static void main(String[] args) {
@@ -81,14 +90,22 @@ public class LogAnalyzer {
 		analyzer.readFiles(args);
 		analyzer.find();
 		System.out.println(builder.toString());
-		analyzer.getSequenceDiagram(builder.toString(), "c:/temp/result/detail_diagram" + System.currentTimeMillis()+ ".png", "rose");
-		analyzer.getSequenceDiagram(mergedbuilder.toString(), "c:/temp/result/simple_diagram" + System.currentTimeMillis()+ ".png", "rose");
-		analyzer.getSequenceDiagram(summarybuilder.toString(), "c:/temp/result/summary_diagram" + System.currentTimeMillis()+ ".png", "rose");
-		analyzer.writeCSV("c:/temp/result/summary" + System.currentTimeMillis()+ ".csv");
-		// getSequenceDiagram("a->b:hello", "c:/temp/out.png", "qsd");
+		
+		File file = new File(fileName);
+
+		inputPath=file.getParent()+"/results" + System.currentTimeMillis() ;
+		new File(inputPath).mkdirs();
+
+		analyzer.getSequenceDiagram(builder.toString(), "detail_diagram","rose");
+		
+		analyzer.getSequenceDiagram(mergedbuilder.toString(), "simple_diagram", "rose");
+		
+		analyzer.getSequenceDiagram(summarybuilder.toString(),"summary_diagram", "rose");
+
+		analyzer.writeCSV(getFileName("summary", ".csv"));
 
 	}
-
+	
 	public void init()
 	{
 		stack.push(new Entry(0));
@@ -117,6 +134,7 @@ public class LogAnalyzer {
 		DEMap.put("FlattenAction", "DE");
 		DEMap.put("AwsSOAPBindingImpl", "eSEP");
 	}	
+
 	public void readFiles(String... args) {
 		for (int i = 0; i < args.length; i++) {
 			readFile(args[i]);
@@ -131,8 +149,9 @@ public class LogAnalyzer {
 	public void readFile(String fileName) {
 
 		try {
+
 			// Get the object of DataInputStream
-			BufferedReader br = new BufferedReader(new InputStreamReader(new DataInputStream(new FileInputStream(fileName))));
+			BufferedReader br = new BufferedReader(new InputStreamReader(new DataInputStream(new FileInputStream(file))));
 			String strLine;
 			int line = 1;
 			while ((strLine = br.readLine()) != null) {
@@ -145,6 +164,7 @@ public class LogAnalyzer {
 	}
 
 	public void find() {
+		List<Entry> previousList=null;
 		while (true) {
 			String first = findFirst(logs);
 			if (first != null) {
@@ -157,12 +177,43 @@ public class LogAnalyzer {
 				
 				filter(list);
 				
-				//** Generate Detail Diagram
 				generateSequenceText(list, builder);
 				
-				merge(list);				
-				generateSequenceText(list, mergedbuilder);
-//				System.out.println(logs.size());
+				if (list.size()==2)
+				{
+					if (previousList==null)
+					{
+						previousList=list;
+					}
+					else
+					{
+                         if (!merge(previousList, list))
+                         {
+							extracted(previousList);
+							previousList=null;  
+							merge(list);				
+							generateSequenceText(list, mergedbuilder);
+						//				System.out.println(logs.size());
+						
+						// Generate Summary Diagram				
+						replaceFullName(list);
+						merge(list);
+						generateSequenceText(list, summarybuilder);
+						
+						generateCSV(list);
+                         }
+					}
+				}
+				else
+				{
+                   if (previousList !=null)
+                   {
+					extracted(previousList);
+                    previousList=null;   
+                   }
+                    merge(list);				
+					generateSequenceText(list, mergedbuilder);
+				//				System.out.println(logs.size());
 				
 				// Generate Summary Diagram				
 				replaceFullName(list);
@@ -170,9 +221,20 @@ public class LogAnalyzer {
 				generateSequenceText(list, summarybuilder);
 				
 				generateCSV(list);
+			}
 			} else
 				break;
 		}
+	}
+
+	private void extracted(List<Entry> previousList) {
+		{
+			   generateSequenceText(previousList, mergedbuilder);
+			   replaceFullName(previousList);
+			   generateSequenceText(previousList, summarybuilder);
+			   generateCSV(previousList);
+			   previousList=null;
+		   }
 	}
 	
 	/**
@@ -203,6 +265,10 @@ public class LogAnalyzer {
 	    	}
 	    }
 		method=list.get(list.size()-1).getMethodName();
+		if (list.get(list.size()-1).getCount()>1)
+		{
+			method= method + " (" + list.get(list.size()-1).getCount() + ")";
+		}
 		total=list.get(list.size()-1).getTime();
 		eSEPTime=total-deTime-dbTime;
 		String  out =method + "," + total + "," + dbTime +"," + deTime + "," + eSEPTime +"\n";
@@ -214,7 +280,7 @@ public class LogAnalyzer {
 		for(Entry entry: list)
 		{
 			String newName = DEMap.get(entry.getClassName());
-			System.out.println(entry.getFullName());
+//			System.out.println(entry.getFullName());
             if (newName !=null)
             {
             	entry.setClassName(newName);
@@ -277,6 +343,22 @@ public class LogAnalyzer {
 		}
 	}
 	
+	private boolean merge(List<Entry> list1, List<Entry> list2)
+	{
+		boolean ret=false;
+		if (list1.size()==2 && list2.size()==2 &&
+				list1.get(0).getFullName().equalsIgnoreCase(list2.get(1).getFullName()))
+				{
+			      Entry entry1=list1.get(1);
+			      Entry entry2=list2.get(1);
+			      
+			      entry1.setTime(entry1.getTime()+ entry2.getTime());
+			      entry1.setCount(entry1.getCount()+1);
+			      ret=true;
+				}
+		return ret;
+	}
+	
 	private int sum(List<Entry> list)
 	{
 		int total=0;
@@ -292,15 +374,22 @@ public class LogAnalyzer {
 	 * @param list
 	 * @return
 	 */
+
 	List<Entry> findSequence(String fullName, List<Entry> list) {
 		List<Entry> newList = new LinkedList<Entry>();
 		String thread = null;
 		for (Entry entry : list) {
 			if (entry.getFullName().equalsIgnoreCase(fullName)
-					&& entry.isEnter()) {
-				thread = entry.getThread();
-				newList.add(entry);
-			} else if (entry.isSameThread(thread)) {
+					&& entry.isEnter())
+			{
+				if (thread==null)
+				{
+				  thread = entry.getThread();
+				  newList.add(entry);
+				}
+			} 
+			else if (entry.isSameThread(thread))
+			{
 				newList.add(entry);
 				if (entry.getFullName().equalsIgnoreCase(fullName)
 						&& !entry.isEnter()) {
@@ -320,6 +409,7 @@ public class LogAnalyzer {
 
 		public void generateSequenceText(List<Entry> list, StringBuilder builder) {
 			Entry lastEnter=null;
+			
 			for (Entry entry : list) {
 				if (entry.isEnter()) {
 					builder.append("\n" + getAlaias(stack.lastElement().getClassName()) + "->" + getAlaias(entry.getClassName()) + ":"
@@ -344,7 +434,7 @@ public class LogAnalyzer {
 					}
 					
 				}
-	//          System.out.println(builder.toString());
+//	          System.out.println(builder.toString());
 			}
 		}
 		
@@ -365,6 +455,9 @@ public class LogAnalyzer {
 	 */
 	public  void getSequenceDiagram(String text, String outFile,String style)
 	{
+		writeSequence(text, getFileName(outFile,".txt"));
+		outFile= getFileName(outFile, ".png");
+		
 		try {
 			// Build parameter string
 			String data = "style=" + style + "&message="
@@ -445,5 +538,24 @@ public class LogAnalyzer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+	}
+	
+	public void writeSequence(String content, String fileName)
+	{
+			FileWriter fstream;
+			try {
+				fstream = new FileWriter(fileName);
+			BufferedWriter out = new BufferedWriter(fstream);
+            out.write(content);
+            out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
+	private static String getFileName(String name, String extension)
+	{
+		return inputPath + "/" + name + extension;
 	}
 }
