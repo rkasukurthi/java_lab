@@ -108,27 +108,42 @@ public String toString() {
  * @param str
  * @return
  */
-static Entry build(int line, String str) 
+static Entry build(int line, String str, int offset) 
 {
 	Entry entry= new Entry(line);
 //	System.out.println(str);
 	String[] arr=str.split(" ");
-	entry.setThread(arr[1]);
-	entry.setEnter(arr[2].equalsIgnoreCase("entering"));
+	entry.setThread(arr[2-offset]);
+	entry.setEnter(arr[3-offset].equalsIgnoreCase("entering"));
     if (!entry.isEnter())
     {
-    	entry.setFullName(arr[3].substring(0,arr[3].length()-1));
+    	entry.setFullName(arr[4-offset].substring(0,arr[4-offset].length()-1));
     }
     else
     {
-    	entry.setFullName(arr[3]);
+    	entry.setFullName(arr[4-offset]);
     }
     String[] arr1=entry.getFullName().split("\\.");
-    if (arr1.length<2) System.out.println("-------------" + entry.getFullName());
-    entry.setClassName(arr1[0]);	
-    entry.setMethodName(arr1[1]);
-    if (!entry.isEnter()) entry.setTime(Integer.parseInt(arr[4]));   
+//    if (arr1.length<2) System.out.println("-------------" + entry.getFullName());
+    if (arr1.length==1)
+    {
+    	if (arr1[0].equalsIgnoreCase("loadTX")||arr1[0].equalsIgnoreCase("storeTX"))
+    	{
+    		entry.setClassName("DB");	
+    		entry.setMethodName(arr1[0]);
+    	}
+    	else
+    	{
+    		entry.setClassName(arr1[0]);	
+    		entry.setMethodName(arr1[0]);
+    	}
+    }
+    else
+    {
+    	entry.setClassName(arr1[0]);	
+    	entry.setMethodName(arr1[1]);
+    }
+    if (!entry.isEnter()) entry.setTime(Integer.parseInt(arr[5-offset]));   
 	return entry;
 }
-  
 }
