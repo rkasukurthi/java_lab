@@ -33,27 +33,12 @@ package sort;
  */
 
 /**
- * A quick sort demonstration algorithm
+ * A merge sort demonstration algorithm
  * SortAlgorithm.java, Thu Oct 27 10:32:35 1994
  *
- * @author James Gosling
- * @version 	1.6f, 31 Jan 1995
- */
-/**
- * 19 Feb 1996: Fixed to avoid infinite loop discoved by Paul Haeberli.
- *              Misbehaviour expressed when the pivot element was not unique.
- *              -Jason Harrison
- *
- * 21 Jun 1996: Modified code based on comments from Paul Haeberli, and
- *              Peter Schweizer (Peter.Schweizer@mni.fh-giessen.de).  
- *              Used Daeron Meyer's (daeron@geom.umn.edu) code for the
- *              new pivoting code. - Jason Harrison
- *
- * 09 Jan 1998: Another set of bug fixes by Thomas Everth (everth@wave.co.nz)
- *              and John Brzustowski (jbrzusto@gpu.srv.ualberta.ca).
  */
 
-class QSortAlgorithm extends SortAlgorithm {
+class MergeSortAlgorithm extends SortAlgorithm {
 
 	void sort(int a[], int lo0, int hi0) throws Exception {
 	int lo = lo0;
