@@ -1,0 +1,4 @@
+1. Add Maven groovy support
+
+http://groovy.codehaus.org/Groovy-Eclipse+compiler+plugin+for+Maven
+
