@@ -10,17 +10,23 @@ public class InterruptSample implements Runnable {
 
 	public void run() {
 	   int i=0;
+	   while (true)
+	   {
        System.out.println("I am sleeping daemon");
        while(!Thread.interrupted())
        {
     	   try {
-			Thread.sleep(1000);
-			System.out.println("sleeping " + i++);
+    		   System.out.println("Hibernating " + i++);
+			Thread.sleep(1000000);
 		} catch (InterruptedException e) {
 			System.out.println(" I was interrupted, I can sleep again");
 			Thread.currentThread().interrupt();
 		}
        }
+       
+       System.out.println("Finish my job ...");
+	   }
+       
 	}
 	
 	
@@ -30,6 +36,10 @@ public class InterruptSample implements Runnable {
 //		thread.setDaemon(true);
 		thread.start();
 		
+		Thread.sleep(2500);
+		thread.interrupt();
+		Thread.sleep(2500);
+		thread.interrupt();
 		Thread.sleep(2500);
 		thread.interrupt();
 	} 

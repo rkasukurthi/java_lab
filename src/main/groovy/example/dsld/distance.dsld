@@ -1,4 +1,21 @@
+/**
+ * DSLD means DSL Desciptor
+ * This document describes Groovy-Eclipse's DSL descriptors. DSL descriptors (or DSLDs) are groovy files that
+ * describe domain-specific extensions to Groovy-Eclipse's inferencing engine and content assist. 
+ * They allow end-users to script extensibility to Groovy-Eclipse's editing support. This document is up to date
+ * for Groovy-Eclipse 2.5.2.
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
+
+
 package example.dsld
+
 class Distance implements Comparable {
 
 BigDecimal length
@@ -100,8 +117,5 @@ class Unit {
 			new Distance(length: Unit.convertUnit(d, Unit.mi), unit: Unit.mi)
 		}
 	}
-
-//def d1 =Distance(length: 10, unit: Unit.mm)
-//println d1
 
 

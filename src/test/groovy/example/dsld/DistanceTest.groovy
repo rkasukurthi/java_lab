@@ -4,13 +4,18 @@ import groovy.util.GroovyTestCase;
 
 /**
  * Test Distance DSL  
+ * see details in {@link http://groovy.codehaus.org/Pimp+my+Library+Pattern}
+ * 
+ *The Pimp my Library Pattern suggests an approach for extending a library that nearly does everything that you need
+ *but just needs a little more. It assumes that you do not have source code for the library of interest.
+ * 
  * 
  * @author zluo
  *
  */
 class DistanceTest extends GroovyTestCase {
 	
-	void testSomething()
+	void testDistance()
 	{
 		use(DistanceCategory.class){
 			def d1=1.m
@@ -29,5 +34,6 @@ class DistanceTest extends GroovyTestCase {
 						
 		 }
 	}
-    
+  
+	
 }
