@@ -1,9 +1,4 @@
-package example.scripts
-
-
-
-
-
+package example.embedding
 
 /**
  * Example 1 upto and closure
@@ -11,12 +6,17 @@ package example.scripts
 def totalClinks=0
 def partyPeople=100
 
+println '========test closure========'
 1.upto(partyPeople) {
 	guestNumber ->
 	clinksWithGuest=guestNumber-1
 	totalClinks += clinksWithGuest
 }
 assert totalClinks == (partyPeople*(partyPeople-1))/2
+println 'test result: totalClinks = ' + totalClinks 
+
+
+println ' '
 println 'test condition'
 
 
