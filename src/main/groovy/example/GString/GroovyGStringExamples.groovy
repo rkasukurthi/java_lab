@@ -19,8 +19,8 @@ println "---------------------------------------"
 def name="James"
 def text="""\
 <h1> hello world </h1>
-hello there ${name}
-how are you today?
+	hello there ${name}
+	how are you today?
 My name is Smith
 """
 assert text !=null
@@ -82,10 +82,12 @@ println "Date is ${date.toGMTString()}!"
 
 /**
 *Gstring as template with closure
+*
+*out << return
 */
 
 def noParam = { -> println "I'm executed"; return "no param" }
-def oneParam = { out -> println "Executed with a ${out.class} parameter"; out << "one param" }
+def oneParam = { out -> println "Executed with a ${out.class} parameter"; out << "one param 1" }
 
 assert noParam.toString() != "no param"
 

@@ -23,3 +23,15 @@ import java.text.DecimalFormat
 	r.each {println it}
 	(3..7).each{println it}
 	
+	// Data Convert using the keyword 'as'
+	
+	assert ('100' as Integer)==100
+	
+	def x = ['97', '98', '99'] as Integer[] //convert each item in list to an Integer
+	assert x[0] == 97 && x[1] == 98 && x[2] == 99 //access each element individually
+	
+	// GString have to be used inside double quotes
+	10.times{ println "* $it"}
+	10.times{ println '* $it'}
+	
+	

@@ -4,6 +4,7 @@ import groovy.util.GroovyTestCase;
 
 class EnhancedIntegerTest extends GroovyTestCase {
 
+
 	void testEnhancedInteger() {
 		use(EnhancedInteger) {
 			assert 4.greaterThanAll([1,2,3])

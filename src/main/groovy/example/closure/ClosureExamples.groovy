@@ -9,13 +9,22 @@ package example.closure
  */
 
 	def x=2
+	
+	// Define the closure
 	def c= {number -> number*number}
+	
+	// Call the closure in shorthand
 	def y=c(x)  // shorthand
+	
+	// Call the closure in longhand
 	def z=c.call(x) //longhand
 	assert y==z
 
 	public class GVector extends java.util.Vector
 	{
+
+// closure as the parameters
+		
 		public void apply(c)
 		{
 			for (i in 0..<size())
@@ -36,7 +45,7 @@ package example.closure
 	gVect.apply(c1)
 	
 	
-	println "------------------------------------------------"
+	println " Exmaple Employee ------------------------------------------------"
 	
 	class Employee{
 		def salary
@@ -56,7 +65,7 @@ package example.closure
 	
 	
 	
-	println "------------------------------------------------"
+	println """Example User:------------------------------------------------"""
 	
 	// sample entity
 	class User{

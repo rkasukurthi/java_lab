@@ -1,5 +1,7 @@
 package example.collection
 
+import java.awt.event.ItemEvent;
+
 
 /**
  * The document located in 
@@ -14,6 +16,7 @@ arr.each(square)
 arr.each{println it}
 
 // Getting efficient with the star-dot '*.' operator
+assert [1, 3, 5] == ['a', 'few', 'words']*.size()
 assert [1, 3, 5] == ['a', 'few', 'words']*.size()
 
 
