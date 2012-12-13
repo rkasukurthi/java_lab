@@ -65,7 +65,6 @@ public class TrafficLight {
 	 {
 		 System.out.println(t);
 		 t.change();
-		 
 	 }
  }
  
