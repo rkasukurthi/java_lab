@@ -1,7 +1,7 @@
 package example.dynamic_groovy
 
 
-//*************************** Example one 
+//*************************** Example one ***********************
 class XmlBuilder {
    def out
    XmlBuilder(out) { this.out = out }
@@ -17,6 +17,7 @@ class XmlBuilder {
        out << "</$name>"
    }
 }
+
 def xml = new XmlBuilder(new StringBuffer())
 xml.html {
     head {
