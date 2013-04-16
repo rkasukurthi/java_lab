@@ -85,7 +85,11 @@
 			<artifactId>google-api-services-analytics</artifactId>
 			<version>v3-rev7-1.6.0-beta</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk16</artifactId>
+			<version>1.45</version>
+		</dependency>
 	</dependencies>
 
 	<build>
