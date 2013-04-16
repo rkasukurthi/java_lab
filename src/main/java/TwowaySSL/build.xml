@@ -1,0 +1,192 @@
+<project name="SSL Certs" default="self-signed-certs">
+
+   <property environment="env" /> 
+
+   <target name="self-signed-certs"
+      description="Create self signed public/private key pairs for client and server">
+      <echo message="keytool -genkey -alias clientCert -keyalg RSA -validity 730 -keystore client.keystore -dname cn=ClientCert,o=SomeCA,ou=SomeCAOrg -keypass clientcert -storepass clientcert" />
+      <exec executable="${env.JAVA_HOME}/bin/keytool" dir=".">
+         <arg value="-genkey" />
+         <arg value="-alias" />
+         <arg value="clientCert" />
+         <arg value="-keyalg" />
+         <arg value="RSA" />
+         <arg value="-validity" />
+         <arg value="730" />
+         <arg value="-keystore" />
+         <arg value="client.keystore" />
+         <arg value="-dname" />
+         <arg value="cn=ClientCert,o=SomeCA,ou=SomeCAOrg" />
+         <arg value="-keypass" />
+         <arg value="clientcert" />
+         <arg value="-storepass" />
+         <arg value="clientcert" />
+      </exec> 
+      <exec executable="${env.JAVA_HOME}/bin/keytool" dir=".">
+         <arg value="-list" />
+         <arg value="-keystore" />
+         <arg value="client.keystore" />
+         <arg value="-storepass" />
+         <arg value="clientcert" />
+      </exec>
+
+      <echo message="keytool -genkey -alias serverCert -keyalg RSA -validity 730 -keystore server.keystore -dname cn=localhost,o=SomeCA,ou=SomeCAOrg -keypass servercert -storepass servercert" />
+      <exec executable="${env.JAVA_HOME}/bin/keytool" dir=".">
+         <arg value="-genkey" />
+         <arg value="-alias" />
+         <arg value="serverCert" />
+         <arg value="-keyalg" />
+         <arg value="RSA" />
+         <arg value="-validity" />
+         <arg value="730" />
+         <arg value="-keystore" />
+         <arg value="server.keystore" />
+         <arg value="-dname" />
+         <arg value="cn=localhost,o=SomeCA,ou=SomeCAOrg" />
+         <arg value="-keypass" />
+         <arg value="servercert" />
+         <arg value="-storepass" />
+         <arg value="servercert" />
+      </exec> 
+      <exec executable="${env.JAVA_HOME}/bin/keytool" dir=".">
+         <arg value="-list" />
+         <arg value="-keystore" />
+         <arg value="server.keystore" />
+         <arg value="-storepass" />
+         <arg value="servercert" />
+      </exec>
+
+      <!-- Export the public keys as x509 certs -->
+      <echo message="keytool -export -alias clientCert -keystore client.keystore -storepass clientcert -file client.cer" />
+      <exec executable="${env.JAVA_HOME}/bin/keytool" dir=".">
+         <arg value="-export" />
+         <arg value="-alias" />
+         <arg value="clientCert" />
+         <arg value="-keystore" />
+         <arg value="client.keystore" />
+         <arg value="-storepass" />
+         <arg value="clientcert" />
+         <arg value="-file" />
+         <arg value="client.cer" />
+      </exec>
+      <exec executable="${env.JAVA_HOME}/bin/keytool" dir=".">
+         <arg value="-printcert" />
+         <arg value="-file" />
+         <arg value="client.cer" />
+      </exec>
+
+      <echo message="keytool -export -alias serverCert -keystore server.keystore -storepass servercert -file server.cer" />
+      <exec executable="${env.JAVA_HOME}/bin/keytool" dir=".">
+         <arg value="-export" />
+         <arg value="-alias" />
+         <arg value="serverCert" />
+         <arg value="-keystore" />
+         <arg value="server.keystore" />
+         <arg value="-storepass" />
+         <arg value="servercert" />
+         <arg value="-file" />
+         <arg value="server.cer" />
+      </exec>
+      <exec executable="${env.JAVA_HOME}/bin/keytool" dir=".">
+         <arg value="-printcert" />
+         <arg value="-file" />
+         <arg value="server.cer" />
+      </exec>
+
+      <!-- Import the certs into truststores -->
+      <echo message="keytool -import -alias serverCert -keystore client.truststore -storepass clientcert -file server.cer" />
+      <exec executable="${env.JAVA_HOME}/bin/keytool" dir="." inputstring="y">
+         <arg value="-import" />
+         <arg value="-alias" />
+         <arg value="serverCert" />
+         <arg value="-keystore" />
+         <arg value="client.truststore" />
+         <arg value="-storepass" />
+         <arg value="clientcert" />
+         <arg value="-file" />
+         <arg value="server.cer" />
+      </exec>
+
+      <echo message="keytool -import -alias clientCert -keystore server.truststore -storepass servercert -file client.cer" />
+      <exec executable="${env.JAVA_HOME}/bin/keytool" dir="." inputstring="y">
+         <arg value="-import" />
+         <arg value="-alias" />
+         <arg value="clientCert" />
+         <arg value="-keystore" />
+         <arg value="server.truststore" />
+         <arg value="-storepass" />
+         <arg value="servercert" />
+         <arg value="-file" />
+         <arg value="client.cer" />
+      </exec>
+
+      <!-- List the keystore contents -->
+      <echo message="client.keystore contents:" />
+      <exec executable="${env.JAVA_HOME}/bin/keytool" dir=".">
+         <arg value="-list" />
+         <arg value="-keystore" />
+         <arg value="client.keystore" />
+         <arg value="-storepass" />
+         <arg value="clientcert" />
+      </exec>
+      <echo message="server.keystore contents:" />
+      <exec executable="${env.JAVA_HOME}/bin/keytool" dir=".">
+         <arg value="-list" />
+         <arg value="-keystore" />
+         <arg value="server.keystore" />
+         <arg value="-storepass" />
+         <arg value="servercert" />
+      </exec>
+
+   </target>
+
+   <!-- Convert the client.cer private key to a pkcs12 format cert -->
+   <target name="cer2pkcs12"
+      description="Convert the client.cer private key to a pkcs12 format cert">
+      <mkdir dir="classes" />
+      <javac destdir="classes" srcdir="src" />  
+      <!-- Extract the clientCert private key to client.p8 -->
+      <java classname="ExportPrivateKey" classpath="classes" output="client.p8">
+         <arg value="client.keystore" />
+         <arg value="clientCert" />
+         <arg value="clientcert" />
+      </java>
+      <!-- Convert client.cert from DER to PEM to do the pkcs12 conversion -->
+      <echo message="openssl x509 -out client-pem.cer -outform pem -text -in client.cer -inform der" />
+      <exec executable="openssl" dir=".">
+         <arg value="x509" />
+         <arg value="-out" />
+         <arg value="client-pem.cer" />
+         <arg value="-outform" />
+         <arg value="pem" />
+         <arg value="-text" />
+         <arg value="-in" />
+         <arg value="client.cer" />
+         <arg value="-inform" />
+         <arg value="der" />
+      </exec>
+      <!-- Combine the private key and public key into pkcs12 format -->
+      <echo message="openssl pkcs12 -export -out client.p12 -inkey client.8 -in client-pem.cer -passout pass:clientcert" />
+      <exec executable="openssl" dir=".">
+         <arg value="pkcs12" />
+         <arg value="-export" />
+         <arg value="-out" />
+         <arg value="client.p12" />
+         <arg value="-inkey" />
+         <arg value="client.p8" />
+         <arg value="-in" />
+         <arg value="client-pem.cer" />
+         <arg value="-passout" />
+         <arg value="pass:clientcert" />
+      </exec>      
+   </target>
+
+   <target name="dist">
+      <zip destfile="../client-server-certs.zip">
+         <zipfileset dir="." prefix="client-server-certs">
+            <include name="build.xml" />
+            <include name="src/**" />
+         </zipfileset>
+      </zip>
+   </target>
+</project>

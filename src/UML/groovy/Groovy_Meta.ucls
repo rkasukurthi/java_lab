@@ -1,0 +1,77 @@
+<class-diagram version="1.0.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <interface id="1" corner="BOTTOM_RIGHT" language="java" name="groovy.lang.MetaClass" project="groovy" 
+    file="/groovy/src/main/groovy/lang/MetaClass.java" binary="false">    
+    <position height="-1" width="-1" x="540" y="169"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface id="2" corner="BOTTOM_RIGHT" language="java" name="groovy.lang.MetaClassRegistry" project="groovy" 
+    file="/groovy/src/main/groovy/lang/MetaClassRegistry.java" binary="false">    
+    <position height="-1" width="-1" x="300" y="497"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="groovy.lang.MetaClassRegistry.MetaClassCreationHandle" 
+    project="groovy" file="/groovy/src/main/groovy/lang/MetaClassRegistry.java" binary="false">    
+    <position height="-1" width="-1" x="197" y="733"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="groovy.lang.MetaMethod" project="groovy" 
+    file="/groovy/src/main/groovy/lang/MetaMethod.java" binary="false">    
+    <position height="-1" width="-1" x="1087" y="279"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="5" corner="BOTTOM_RIGHT" language="java" name="groovy.lang.MetaObjectProtocol" project="groovy" 
+    file="/groovy/src/main/groovy/lang/MetaObjectProtocol.java" binary="false">    
+    <position height="-1" width="-1" x="171" y="193"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="groovy.lang.MetaProperty" project="groovy" 
+    file="/groovy/src/main/groovy/lang/MetaProperty.java" binary="false">    
+    <position height="-1" width="-1" x="720" y="690"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" name="groovy.lang.MetaExpandoProperty" project="groovy" 
+    file="/groovy/src/main/groovy/lang/MetaExpandoProperty.java" binary="false">    
+    <position height="-1" width="-1" x="982" y="691"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <generalization id="8">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <nesting id="9">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </nesting>  
+  <generalization id="10">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
