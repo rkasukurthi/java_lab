@@ -1,3 +1,6 @@
 /target
 /org
 /META-INF
+*.class
+*.csv
+*.prefs
