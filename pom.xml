@@ -95,6 +95,11 @@
 			<artifactId>itextpdf</artifactId>
 			<version>5.0.6</version>
 		</dependency>
+		<dependency>
+			<groupId>com.tictactec</groupId>
+			<artifactId>ta-lib</artifactId>
+			<version>0.4.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

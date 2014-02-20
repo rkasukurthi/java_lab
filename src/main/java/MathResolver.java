@@ -8,6 +8,8 @@ public class MathResolver {
 	boolean[] numberTakens = {false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true};
 	int[] maze=	{-1,0,0,0,0,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,0,0,0,0,0};
 	Stack[] stacks= new Stack[25];
+	
+	
 	public static void main(String[] args)
 	{
 		MathResolver  mr= new MathResolver();

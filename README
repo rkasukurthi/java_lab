@@ -1,14 +1,12 @@
-Sample code Project:
+Sample code Project For Java and Groovy:
+
 	These are some sources of this project:
 	
-	1. Study/Practice sample code
+	1. sample codes
 	
-	2. Suddenly have a idea
+	2. experiment codes
 	
-	3. Practical and usful code
-	
-	4.LogAnalyzer
-	
+	3. small utility codes 
 	
 	=================================================================
 	Project Change
@@ -16,3 +14,5 @@ Sample code Project:
 	Dec 23, 2011 Add Groovy Support and Groovy examples
 	
     May 23, 2012 Continue Groovy examples
+    
+    Feb 20, 2014 Review Groovy samples
