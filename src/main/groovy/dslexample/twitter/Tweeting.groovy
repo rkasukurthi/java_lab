@@ -25,12 +25,23 @@ messages.each{message ->
 }
 println "================= Query =================="
 //Searching
-def query = new Query("BLDP")
+def query = new Query("PAL")
+println twitter.search(query).toString()
+
 twitter.search(query).tweets.each{tweet ->
-	println "${tweet.user.name} : ${tweet.text}"
+	println "${tweet.user.name} : ${tweet.text}\n"
+}
+println "=============== Get a list of my followers================"
+
+twitter.friendsFollowers().each{
+	println it.screenName
 }
 
-println "================= Following =================="
+println "=============== Get a list of my favorite================"
+twitter.favorites.each{
+	println it
+}
 
+twitter.
 
 

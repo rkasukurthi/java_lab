@@ -1,4 +1,5 @@
-package pattern.behavioral.state.enumImp;
+package pattern.behavioral.state.game.enumImpl;
+
 
 /**
  * This example demonstrate State Pattern using 
@@ -26,24 +27,24 @@ package pattern.behavioral.state.enumImp;
  *
  */
 
-public class StateContext {
-  private State state=State.OFF;
+public class Game {
+  private Player state=Player.WHITE;
   
   /**
    * Changing states 
    */
-  public void transition()
+  public void play()
   {
-	  state=state.transitionState();
+	  state=state.play();
   }
   
   public static void main(String[] args)
   {
-	  StateContext context = new StateContext();
-	  context.transition();
-	  context.transition();
-	  context.transition();
-	  context.transition();
+	  Game game = new Game();
+	  game.play();
+	  game.play();
+	  game.play();
+	  game.play();
 	  
   }
 }

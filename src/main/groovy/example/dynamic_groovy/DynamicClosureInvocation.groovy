@@ -1,16 +1,24 @@
 package example.dynamic_groovy
 
-def c = {
-	println "I'm a clousre, named c"
+def c = { it1->
+	return "$it1,I'm a clousre, named c, $it1"
+}
+// call closure with the variable
+println "${c('Hello')} , ok"
+
+def c1 = { it1->
+	  println "directly call closure, $it1,I'm a clousre, named c, $it1"
 }
 
-// call closure directly
-c()
+c1 'c1'
 
-// def method name
+/**
+ * call a closure from string
+ */
+def string ="{it -> println it}"
+def sh=evaluate(string)
+sh(1)
 
-def method ='c'
+sh 2
 
-// call closure with the variable
-
-println "$method"
+sh 'dddd'

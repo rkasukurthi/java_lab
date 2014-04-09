@@ -43,8 +43,6 @@ public class MathResolver {
 					
 				}
 				
-				
-				
 			}
 	 }
 	 public Stack<Integer> findPossibility(Integer number)

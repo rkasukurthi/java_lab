@@ -18,8 +18,15 @@ package example.sort
 def map=[a:1, b:5, c:4]
 
 def map1 =map.sort{a,b -> a.value <=> b.value}
-
 println map1.toMapString()
+
+
+def map2 =map.sort{it.value}
+println map2.toMapString()
+
+//descending
+def map3 =map.sort{-it.value}
+println map3.toMapString()
 
 
 assert -1 == (5 <=> 7)
