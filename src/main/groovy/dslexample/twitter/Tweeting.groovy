@@ -42,6 +42,5 @@ twitter.favorites.each{
 	println it
 }
 
-twitter.
 
 

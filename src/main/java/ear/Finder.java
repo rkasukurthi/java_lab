@@ -51,6 +51,10 @@ public class Finder {
 
     ZipEntry en;
     while ((en = zin.getNextEntry()) != null) {
+      if (en.getName().contains("ILogCode")){
+        System.out.println(en.getName());
+        r.add(f + "!" + en);
+      }
       if (p.accept(en.getName()))
         r.add(f + "!" + en);
       if (isZip(en.getName()))

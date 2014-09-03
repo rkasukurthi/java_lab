@@ -1,9 +1,13 @@
 package rule.engine.sample
 /**
  * Simplely Rule Engine are just conditions and Actions
+ * Review at June 9th, 2014
+ * 
+ * parameters list contains [c1,c2,a1]
+ * 
+ * Rule engine iterate all conditions, then run action.
  * 
  */
-
 
 class Developer {
 	private String name
@@ -56,7 +60,7 @@ class RuleEngine {
 			println "Excuting rule in ${(rule.singlehit?"singlehit":"multihit")} mode."
 			def exit =false
 			
-			rule.parameters.each{ArrayList params ->
+			rule.parameters{ArrayList params ->
 				def pcounter=0
 				def success=true
 				
@@ -101,7 +105,6 @@ class RuleEngine {
 		//********************PARAMETERS*********************
 		rule.parameters=[
 			[1,3,'Beginner'],
-			[1,3,'Starter'],
 			[4,6,'Junior'],
 			[7,10,'Average'],
 			[11,20,'Senior'],
@@ -111,7 +114,7 @@ class RuleEngine {
 	}
 	
 	
-	def dev = new Developer(name:"Peter", experience:2)
+	def dev = new Developer(name:"Peter", experience:10)
 	println "Before: ${dev.dump()}"
 	
 	def ruleset = new RuleSet()

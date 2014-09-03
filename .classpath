@@ -37,5 +37,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry exported="true" kind="con" path="GROOVY_DSL_SUPPORT"/>
 	<classpathentry exported="true" kind="con" path="GROOVY_SUPPORT"/>
+	<classpathentry kind="lib" path="C:/src/lib/oracle/ojdbc14.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

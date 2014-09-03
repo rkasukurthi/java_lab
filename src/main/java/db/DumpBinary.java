@@ -20,7 +20,7 @@ public class DumpBinary {
 	 */
 	public void dumpBinary()
 	{
-		Connection connection =getConnection();
+		Connection connection =getConnectionOracle();
 		try {
 		Statement st = connection.createStatement();
 		ResultSet res = st.executeQuery(sqlString);
@@ -28,7 +28,7 @@ public class DumpBinary {
 		while (res.next()) {
 
 			int id = res.getInt(1);
-			byte[] contents = res.getBytes(2);
+			byte[] contents = res.getBytes(3);
             System.out.println(id);  	
             writeBinary(id, contents);
 		}// while
@@ -88,6 +88,22 @@ public class DumpBinary {
 			e.printStackTrace();
 		}
 		return connection;
+	}
+	public Connection getConnectionOracle() {
+	  Connection connection = null;
+	  
+	  try {
+	    Class.forName("oracle.jdbc.OracleDriver");
+	    connection = DriverManager.getConnection(
+	        "jdbc:oracle:thin:@localhost:1521:orcl",
+	        "esep51", // username
+	        "silanis1"); // password
+	    
+	  } catch (Exception e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	  }
+	  return connection;
 	}
 	private static void close(ResultSet r) {
 		if (r != null) {

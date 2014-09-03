@@ -1,6 +1,9 @@
 package example.delegate
 
+
 /**
+ *
+ *  
  * Java doesn't provide any built-in delegation mechanism, and so far Groovy didn't either. 
  * But with the @Delegate transformation, a class field or property can be annotated and become 
  * an object to which method calls are delegated. In the following example, an Event class has 
