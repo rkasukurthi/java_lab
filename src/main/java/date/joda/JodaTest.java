@@ -18,6 +18,10 @@ public class JodaTest {
     
     assertEquals(yesterday.toString(), "2014-09-02T15:34:44.870-04:00");
     
+    assertEquals(now.getYear(),2014);
+    assertEquals(now.getMonthOfYear(),9);
+    assertEquals(now.getDayOfMonth(),3);
+    
   }
   
 

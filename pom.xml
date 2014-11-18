@@ -23,6 +23,16 @@
 			<id>google-api-services</id>
 			<url>http://mavenrepo.google-api-java-client.googlecode.com/hg</url>
 		</repository>
+		<repository>
+			<id>snapshots-repo</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -119,6 +129,25 @@
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.tomakehurst</groupId>
+			<artifactId>wiremock</artifactId>
+			<version>1.50</version>
+
+			<!-- Include this if you have dependency conflicts for Guava, Jetty, Jackson 
+				or Apache HTTP Client -->
+			<classifier>standalone</classifier>
+		</dependency>
+		<dependency>
+			<groupId>edu.cmu.sphinx</groupId>
+			<artifactId>sphinx4-core</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.cmu.sphinx</groupId>
+			<artifactId>sphinx4-data</artifactId>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
