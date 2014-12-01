@@ -8,5 +8,4 @@ public class ServerPublisher {
     Endpoint.publish("http://localhost:9999/ws/image", new ImageServerImpl());
     System.out.println("Server is published");
   }
-
 }
