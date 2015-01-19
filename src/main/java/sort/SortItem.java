@@ -137,6 +137,7 @@ public class SortItem extends java.applet.Applet implements Runnable {
     public void init() {
 	String at = getParameter("alg");
 	if (at == null) {
+//	    at ="MergeSort"	;
 	    at ="QSort"	;
 //	    at = "BubbleSort";
 	}
@@ -144,7 +145,7 @@ public class SortItem extends java.applet.Applet implements Runnable {
 	algName = "sort." + at + "Algorithm";
 	scramble();
 
-	resize(200, 200);
+	resize(400, 400);
     }
 
     /**
