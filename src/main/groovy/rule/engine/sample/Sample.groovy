@@ -33,6 +33,11 @@ assert developer.level=="Junior"
 
 /**
  * Define rule, ruleset is the set of rules 
+ * 
+ * There are three elements inside Rule class, conditions, actions and parameters.
+ * 
+ * parameters 
+ * 
  * @author zluo
  *
  */

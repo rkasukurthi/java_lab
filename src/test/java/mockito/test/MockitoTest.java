@@ -189,4 +189,14 @@ public class MockitoTest {
 		System.out.println(iMock.call("foo"));
 
 	}
+	
+	@Test
+	public void testSpy(){
+		List list = new LinkedList();
+		List spy = spy(list);
+
+		//You have to use doReturn() for stubbing
+		doReturn("foo").when(spy).get(0);
+
+	}
 }
