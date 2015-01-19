@@ -27,4 +27,14 @@ public class TestQsort{
     }
   }
   
+  @Test
+  public void testInsertSort() {
+	    InsertSortAlgorithm insertSort= new InsertSortAlgorithm();
+	    insertSort.sort(a2);
+	    for(int i=0; i<a.length; i++) {
+	      System.out.println(a2[i]);
+	      assertEquals(i,a2[i]);
+	    }
+	  }
+  
 }
