@@ -36,5 +36,14 @@ public class TestQsort{
 	      assertEquals(i,a2[i]);
 	    }
 	  }
+  @Test
+  public void testHeapSort() {
+    HeapSortAlgorithm insertSort= new HeapSortAlgorithm();
+    insertSort.sort(a2);
+    for(int i=0; i<a.length; i++) {
+      System.out.println(a2[i]);
+      assertEquals(i,a2[i]);
+    }
+  }
   
 }
