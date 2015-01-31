@@ -28,6 +28,31 @@ public class Kadane
         }
         return maxSoFar;
     }    
+    
+    /**
+     * Return maximum subsequence indexs
+     * @param arr
+     * @return
+     */
+    public int[] maxSequence(int[] arr)
+    {        
+        int maxSoFar = arr[0], maxEndingHere = arr[0];
+ 
+        for (int i = 1; i < arr.length; i++)
+        {
+            /* calculate maxEndingHere */
+            if (maxEndingHere < 0)
+                maxEndingHere = arr[i];
+            else
+                maxEndingHere += arr[i];
+ 
+            /* calculate maxSoFar */
+            if (maxEndingHere >= maxSoFar)
+                maxSoFar = maxEndingHere;
+        }
+        return maxSoFar;
+    }    
+    
     /* Main function */
     public static void main (String[] args) 
     {
