@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.maxsubsum;
 /**
  * Kadane's algorithm
  * divide-conquer algorithm

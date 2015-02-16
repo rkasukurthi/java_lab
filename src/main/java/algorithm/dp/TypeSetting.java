@@ -21,8 +21,69 @@ public class TypeSetting {
 		return null;
 	}
 
-	public String[] dpFormat(String input, int length) {
-		return null;
+	public String[] dpFormat(String input, int M) {
+		String words[] = input.split(" ");
+		int n = words.length;
+		int lens[] = new int[n+1];
+		for(int i=1;i<=n; i++) {
+		    lens[i] = words[i-1].length();
+		    if (lens[i]>M) { 
+		    }
+		}
+		
+		int infty = M*M*2;
+
+		// compute S_ij
+		int S[][] = new int[n+1][n+1];
+		for(int i=1;i<=n;i++) {
+		    S[i][i] = M - lens[i];
+		    for(int j=i+1; j<=n; j++) {
+			S[i][j] = S[i][j-1] - lens[j] - 1;
+			if (S[i][j]<0) {
+			    while(j<=n) { S[i][j++] = infty; }
+			}
+		    }
+		}
+
+		// compute best_0,...,best_n
+		int best[] = new int[n+1];
+		int choice[] = new int[n+1];
+		best[0] = 0;
+		for(int i=1;i<=n;i++) {
+		    int min = infty;
+		    int ch  = 0;
+		    for(int j=0;j<i;j++) {
+			int t = best[j] + S[j+1][i]*S[j+1][i];
+			if (t<min) { min = t; ch = j;}
+		    }
+		    best[i] = min;
+		    choice[i] = ch;
+		}
+
+		for(int i=0;i<=n;i++) {
+		    System.out.println(i + " best: " + best[i] + " ch " + choice[i]);
+		}
+
+		// backtrack to output linebreaks
+		int end = n;
+		int start   = choice[end]+1;
+		String lines[] = new String[n];
+		int cnt = 0;
+		while (end>0) {
+		    StringBuffer buf = new StringBuffer();
+		    for(int j=start; j<=end; j++) {
+			buf.append(words[j-1] + " ");
+		    }
+		    lines[cnt++] = buf.toString();
+		    end = start-1;
+		    start = choice[end]+1;
+		}
+
+		for(int j=cnt-1; j>=0; j-- ) {
+		    System.out.println(lines[j]);
+		}
+//		return lines;
+		return lines;
 	}
 
 	public int calculatePenalty(String[] result, int length) {
@@ -45,6 +106,9 @@ public class TypeSetting {
 		assertEquals(0 + 36 + 9 + 4, calculatePenalty(result, 10));
 	}
 
-	
+	@Test
+	public void  testDpFormat(){
+		String[] result = dpFormat(input, 80);
+	}
 	
 }
