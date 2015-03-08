@@ -1,3 +1,4 @@
+package algorithm.mathResolver;
 import static org.junit.Assert.*;
 
 import org.junit.Test;

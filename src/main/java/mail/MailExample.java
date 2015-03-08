@@ -38,10 +38,10 @@ public class MailExample {
 //		message.addRecipient(Message.RecipientType.CC ,new InternetAddress(cc));
 		
 		// Set the subject
-		message.setSubject("Hello JavaMail 按照国家统计局的安排", "UTF-8");
+		message.setSubject("xxx");
 		
 		// Set the content
-		message.setText("Welcome to JavaMail 中广网北京2月15日消息（记者周晋竹）据经济之声报道，国家统计局今天 ");
+		message.setText("xxx ");
 		
 		// Send message
 		Transport.send(message);

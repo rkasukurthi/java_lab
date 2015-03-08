@@ -1,13 +1,13 @@
 package bt;
 
-public class TreeNode {
+public class Node {
 
 	int value;
-	TreeNode left;
-	TreeNode right;
+	Node left;
+	Node right;
 	
 	
-	public TreeNode(int value) {
+	public Node(int value) {
 		super();
 		this.value = value;
 	}
@@ -18,20 +18,22 @@ public class TreeNode {
 	public void setValue(int value) {
 		this.value = value;
 	}
-	public TreeNode getLeft() {
+	public Node getLeft() {
 		return left;
 	}
-	public void setLeft(TreeNode left) {
+	public void setLeft(Node left) {
 		this.left = left;
 	}
-	public TreeNode getRight() {
+	public Node getRight() {
 		return right;
 	}
-	public void setRight(TreeNode right) {
+	public void setRight(Node right) {
 		this.right = right;
 	}
 	
-	
+	public static Node valueOf(int v) {
+	  return new Node(v);
+	}
 	
 
 }

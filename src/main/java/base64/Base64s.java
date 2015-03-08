@@ -1,4 +1,4 @@
-package Base64;
+package base64;
 
 import java.io.IOException;
 import java.util.Vector;

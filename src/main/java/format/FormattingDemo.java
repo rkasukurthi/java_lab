@@ -1,8 +1,13 @@
-package Format;
+package format;
 
 import java.util.Calendar;
 import java.util.Locale;
 
+/**
+ * Example Code for String.format()
+ * @author zluo
+ *
+ */
 public class FormattingDemo {
 	
 	public static void main(String[] args)

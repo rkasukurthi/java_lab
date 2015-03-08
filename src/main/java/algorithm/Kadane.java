@@ -34,7 +34,7 @@ public class Kadane
      * @param arr
      * @return
      */
-    public int[] maxSequence(int[] arr)
+    public void maxSequence(int[] arr)
     {        
         int maxSoFar = arr[0], maxEndingHere = arr[0];
  
@@ -50,7 +50,7 @@ public class Kadane
             if (maxEndingHere >= maxSoFar)
                 maxSoFar = maxEndingHere;
         }
-        return maxSoFar;
+//        return maxSoFar;
     }    
     
     /* Main function */
