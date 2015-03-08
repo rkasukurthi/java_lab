@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.dp;
 
 /*
  *    Java Program to Implement Kadane Algorithm
