@@ -1,4 +1,4 @@
-package sort.myImpl;
+package algorithm.sort.myImpl;
 
 /**
  * Heapsort is one of the best general-purpose sorting algorithms, a comparison sort and part of the

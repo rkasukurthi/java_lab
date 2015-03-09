@@ -8,12 +8,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 /**
- * 
  * In this sample demonstrate Callable and Future Class
- * 
- * 
- * @author zluo
- *
  */
 public class TaskWithResult implements Callable {
     
@@ -35,8 +30,6 @@ public class TaskWithResult implements Callable {
 
 	public static void main(String[] args)
 	{
-//		ExecutorService exec
-		
 		ExecutorService exec = Executors.newCachedThreadPool();
 		ArrayList<Future<String>> results= new ArrayList<Future<String>>();
 		
@@ -47,22 +40,16 @@ public class TaskWithResult implements Callable {
 		
 		for(Future<String> fs: results)
 		{
-			//get() blocks untils completion:
-			
 			try {
 				System.out.println(fs.get());
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} finally
 			{
 				exec.shutdown();
 			}
-			
 		}
 	}
-	
 }

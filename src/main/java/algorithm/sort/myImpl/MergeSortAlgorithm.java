@@ -1,4 +1,4 @@
-package sort.myImpl;
+package algorithm.sort.myImpl;
 
 public class MergeSortAlgorithm implements SortAlgorithm{
 

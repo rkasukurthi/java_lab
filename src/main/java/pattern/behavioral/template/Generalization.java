@@ -1,4 +1,4 @@
-package pattern.template;
+package pattern.behavioral.template;
 
 /**
  *  <pre>

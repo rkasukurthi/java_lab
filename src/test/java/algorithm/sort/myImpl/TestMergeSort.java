@@ -1,4 +1,5 @@
-package sort.myImpl;
+package algorithm.sort.myImpl;
+
 
 import static org.junit.Assert.*;
 
