@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Observable| Subject| EventSource means this object can be observed, Inside observable, there is a
+ * Observable| Subject| EventSource means the object can be observed or can be listened by others, Inside observable, there is a
  * vector which will keep all the observers. Observable provide 3 three method, attach|dettach(Observer),
  * notify(). notify() method will call all update() of Observer.
  * 

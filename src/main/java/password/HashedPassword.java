@@ -1,14 +1,14 @@
 package password;
 
 	import java.io.IOException;
-	import java.security.GeneralSecurityException;
-	import java.security.MessageDigest;
-	import java.security.NoSuchAlgorithmException;
-	import java.util.Arrays;
-	import java.util.regex.Matcher;
+import java.security.GeneralSecurityException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import Base64.Base64s;
+import base64.Base64s;
 
 	/**
 	 * This class contains methods to handle version 2 hashed passwords.

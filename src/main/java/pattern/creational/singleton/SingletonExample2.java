@@ -1,4 +1,5 @@
 package pattern.creational.singleton;
+
 /**
  * First style of singleton example, has a private static instance
  * @author zluo
