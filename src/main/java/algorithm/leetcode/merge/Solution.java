@@ -96,7 +96,32 @@ public class Solution {
     }
     
     private ListNode merge(ListNode n1, ListNode n2) {
-	return n2;
+	ListNode n3;
+	ListNode cn1 = n1;
+	ListNode cn2 = n2;
+	if (n1.val>n2.val){
+	   n3=new ListNode(n2.val); 
+	   cn2=n2.next();
+	}else{
+	    n3=new ListNode(n1.val);
+	    cn1=n1.next();
+	}
+	ListNode cn3 = n3;
+	
+	while (cn1.hasNext()) {
+	    if (cn2==null){
+		cn3.setNext(cn1);
+		cn1=cn1.next();
+	    }
+	    if (cn1.val < cn2.val) {
+		
+	    } else {
+		
+	    }
+	    cn3=cn3.next();
+	}
+	
+	return n3;
     }
     
     @Test
