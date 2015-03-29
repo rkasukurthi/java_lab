@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class AlgorithmUtils {
+public class AU {
   public static void printRow(int[] a) {
     for(int i: a) {
       System.out.print(i + "\t|");
