@@ -3,6 +3,7 @@ package algorithm.leetcode.merge;
 import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
 
 import org.junit.Test;
+import algorithm.leetcode.ListNode;
 /**
  * From 9.47 -9:52 (5 min)
  * @author zluo

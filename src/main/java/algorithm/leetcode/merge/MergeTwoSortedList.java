@@ -3,6 +3,7 @@ package algorithm.leetcode.merge;
 import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
 
 import org.junit.Test;
+import algorithm.leetcode.ListNode;
 
 public class MergeTwoSortedList {
   public ListNode merge(ListNode l1, ListNode l2) {

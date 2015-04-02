@@ -16,7 +16,7 @@ public class Kadane
     int endIndexSofar=0;
         
     
-	/* Function to largest continuous sum */
+    /* Function to largest continuous sum */
     public int maxSequenceSum(int[] arr)
     {        
         int maxSoFar = arr[0], maxEndingHere = arr[0];

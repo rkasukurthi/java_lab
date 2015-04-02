@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-
+import algorithm.leetcode.ListNode;
 /**
  * This question is very common in distributed systems, sorted list from different client to merge
  * together in a central server on it. There are two general approaches to this question, the
