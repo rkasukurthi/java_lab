@@ -228,12 +228,12 @@ public class LogSequenceAnalyzer {
 	public double max(ArrayList<Integer> list)
 	{
 		if (list==null) return 0.0;
-		return Collections.max(list);
+		return (double) Collections.max(list);
 	}
 	public double min(ArrayList<Integer> list)
 	{
 		if (list==null) return 0.0;
 		
-		return Collections.min(list);
+		return (double) Collections.min(list);
 	}
 }
