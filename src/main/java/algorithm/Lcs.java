@@ -7,7 +7,7 @@ package algorithm;
  */
 public class Lcs {
     public static void main(String[] args) {
-        String x = "BDCABA";
+        String x = "BDCABAB";
         String y = "ABCBDAB";
         int M = x.length();
         int N = y.length();
