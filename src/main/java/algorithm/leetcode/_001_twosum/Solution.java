@@ -57,6 +57,7 @@ public class Solution {
     public int[] twoSum(int[] numbers, int target) {
 	
 	HashMap<Integer, LinkedList<Integer>> indexes = new HashMap<Integer, LinkedList<Integer>>();
+
 	/** problem here is the number may be duplicated, so it's need to handle **/
 	for (int i = 0; i < numbers.length; ++i) {
 	    if (indexes.get(numbers[i])==null){
@@ -65,6 +66,7 @@ public class Solution {
 	    indexes.get(numbers[i]).add(i);
 	}
 	
+	/** Reversed Thinking, what you want solve is from first one, calculate second one, then find it from index **/
 	for (int i = 0; i < numbers.length; ++i) {
 	    LinkedList<Integer> list = indexes.get(target - numbers[i]);
 	    if (list !=null) {

@@ -40,20 +40,29 @@ public class Solution {
     private int findMinHealth(int i, int j, int minHealth, int[][] dungenon){
 	
 	System.out.println("i =" +  i + ", j= " + j + " health = " + minHealth);
-	if (cache[i][j] >0) return cache[i][j];
+//	if (cache[i][j] >0) return cache[i][j];
 	
 	if (dungenon[i][j]>0){
-	    cache[i][j]=minHealth;
+	//    cache[i][j]=minHealth;
 	}
 	else{
-	    cache[i][j]=minHealth-dungenon[i][j];
+	    cache[i][j]=minHealth=minHealth-dungenon[i][j];
 	}
-	
-	return Math.min((i>0?findMinHealth(i-1, j, cache[i][j], dungenon):cache[i][j]), (j>0? findMinHealth(i, j-1, cache[i][j],dungenon):cache[i][j]));
+	if (i==0) {
+	  if (j>0) {
+	    return findMinHealth(i, j-1, cache[i][j], dungenon);
+	  }else {
+	    return cache[i][j];
+	  }
+	}
+	if (j==0) {
+	  return findMinHealth(i-1, j, cache[i][j], dungenon);
+	}
+	return Math.min(findMinHealth(i-1, j, cache[i][j], dungenon), findMinHealth(i, j-1, cache[i][j],dungenon));
     }
     @Test
     public void test(){
-	int[][] dungeon={{-5,-1},{-3,-2}};
+	int[][] dungeon={{-5,-1,1},{-3,-2,-2},{-2,-3,-1}};
 	assertEquals(9,calculateMinimumHP(dungeon));
     }
     
