@@ -1,4 +1,4 @@
-package algorithm.leetcode.merge;
+package algorithm.leetcode._023_mergeKlists;
 
 import static org.junit.Assert.assertEquals;
 import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 import algorithm.leetcode.ListNode;
+
 /**
  * This question is very common in distributed systems, sorted list from different client to merge
  * together in a central server on it. There are two general approaches to this question, the
@@ -65,12 +66,11 @@ public class Solution {
   }
 
   /**
-   * This is simple question, classic operations to a two linked list. Maintains two pointers
-   * of two lists, using one list as the base, such as l1, l1 current
-   * period so that if an element is relatively small, so you can move directly l1, l2 otherwise the
-   * current element into the current element l1 the front. The time complexity of the algorithm is
-   * O (m + n), m and n are the lengths of the two lists, the space complexity is O (1), the
-   * following code:
+   * This is simple question, classic operations to a two linked list. Maintains two pointers of two
+   * lists, using one list as the base, such as l1, l1 current period so that if an element is
+   * relatively small, so you can move directly l1, l2 otherwise the current element into the
+   * current element l1 the front. The time complexity of the algorithm is O (m + n), m and n are
+   * the lengths of the two lists, the space complexity is O (1), the following code:
    * 
    * @param l1
    * @param l2
@@ -95,20 +95,6 @@ public class Solution {
       cur.next = l2;
     return dummy.next;
   }
-
-  /*
-   * private ListNode merge(ListNode n1, ListNode n2) { ListNode n3 = null; ListNode cn3=null;
-   * 
-   * if (n1 != null && n2 != null) { if (n1.val > n2.val) { n3 = n2; n2 = n2.next; } else { n3 =n1;
-   * n1 = n1.next; } cn3 = n3; }
-   * 
-   * while (n1 != null && n2 != null) { if (n1.val < n2.val) { cn3.next = n1; n1 = n1.next; } else {
-   * cn3.next = n2; n2 = n2.next; } cn3 = cn3.next; }
-   * 
-   * if (n1 != null) { if (n3==null) { n3=n1; }else { cn3.next = n1; } return n3; }
-   * 
-   * if (n2 != null) { if (n3==null) { n3= n2; }else { cn3.next = n2; } return n3; } return n3; }
-   */
 
   @Test
   public void testCreate() {
