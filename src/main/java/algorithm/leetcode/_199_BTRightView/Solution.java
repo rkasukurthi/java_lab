@@ -20,5 +20,4 @@ public class Solution {
 	list.add(node.val);
 	layers++;
     }
-    
 }
