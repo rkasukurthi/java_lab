@@ -1,5 +1,7 @@
 package algorithm.leetcode._109_ConvertSortedListToBST;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import algorithm.leetcode.ListNode;
@@ -13,6 +15,17 @@ public class Solution {
     public TreeNode sortedListToBST(ListNode head) {
 	return null;
 	
+    }
+    
+    @Test
+    public void test5(){
+	ListNode head = ListNode.create(1,2,3,4,5);
+	TreeNode node = sortedListToBST(head);
+	assertEquals(3, node.val);
+	assertEquals(1, node.left.val);
+	assertEquals(2, node.left.right.val);
+	assertEquals(4, node.right.val);
+	assertEquals(5, node.right.right.val);
     }
     
     @Test
