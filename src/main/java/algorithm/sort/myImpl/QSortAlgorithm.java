@@ -1,5 +1,12 @@
 package algorithm.sort.myImpl;
 
+/**
+ * QuickSort
+ * The thought behind QuickSort is divided and conquer.
+ * and  binary search.
+ * @author zluo
+ *
+ */
 public class QSortAlgorithm implements SortAlgorithm{
 
   public void sort(int[] a) {
@@ -15,7 +22,6 @@ public class QSortAlgorithm implements SortAlgorithm{
       return;
     }
     // pick up a pivot and get out of the way
-    
     int pivot=a[(lo+hi)/2];
     a[(lo+hi)/2]=a[hi];
     a[hi]=pivot;

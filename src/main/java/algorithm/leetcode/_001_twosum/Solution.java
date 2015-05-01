@@ -79,6 +79,23 @@ public class Solution {
 	return null;
     }
     
+    /**
+     * Dynamic Solution Subset Summ Problem
+     * See http://www.geeksforgeeks.org/dynamic-programming-subset-sum-problem/ 
+     * @param numbers
+     * @param target
+     * @return
+     */
+    
+    public int[] twoSum2(int[] numbers, int target) {
+//      findSum(0, numbers);
+	return null;
+    }
+    
+    void find(int i, int[] numbers){
+    }
+    
+    
     @Test
     public void testTwoSum() {
 	int[] numbers = { 2, 7, 11, 15 };

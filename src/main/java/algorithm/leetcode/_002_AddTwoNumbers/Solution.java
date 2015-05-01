@@ -11,32 +11,33 @@ import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEqua
  * digit. Add the two numbers and return it as a linked list.
  * 
  * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4) Output: 7 -> 0 -> 8 }
+ * 
+ * [Review] 24/04/2015 It's possible to get rid of root? yes. handle some conditions in front, then reduce
+ * if/else in the rest of code.
+ * 
  */
 public class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-	ListNode root = new ListNode(0);
-	root.next =l1;
-	ListNode result=root.next;
-	while (result !=null && l2!=null){
-	    add(result, l2.val);
+	if (l1==null) return l2;
+	ListNode result=l1;
+	while (l1 !=null && l2!=null){
+	    add(l1, l2.val);
 	    l2=l2.next;
-	    if (result.next!=null){
-		result =result.next;
+	    if (l1.next !=null){
+		l1 =l1.next;
 	    }else{
 		break;
 	    }
 	}
-	
-	if (l2 !=null){
-	    if (result !=null){
-		result.next=l2;
-	    }else{
-		root.next=l2;
-	    }
-	}
-	return root.next;
+	if (l2 !=null)	l1.next=l2;
+	return result;
     }
     
+    /**
+     * Recurrsion when sum great than 10. 
+     * @param result
+     * @param operand
+     */
     private void add(ListNode result, int operand){
 	int i =result.val + operand;
 	if (i<10){
