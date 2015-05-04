@@ -16,29 +16,27 @@ import org.junit.Test;
  * value if the key is not already present. When the cache reached its capacity,
  * it should invalidate the least recently used item before inserting a new
  * item.
- *
+ *http://www.javaspecialists.eu/archive/Issue073.html
  */
+
 public class LRUCache {
-    private Map<Integer, Integer> map = new LinkedHashMap<Integer, Integer>();
+    private Map<Integer, Integer> map;
     private int capacity;
     
     public LRUCache(int capacity) {
+	map=new LinkedHashMap<Integer, Integer>(capacity, 1, true);
 	this.capacity = capacity;
     }
     
     public int get(int key) {
 	if (!map.containsKey(key)) return -1;
-	int val;
-	    val = map.get(key);
-	    set(key, val);
-	return val;
+	return map.get(key);
     }
     
     public void set(int key, int value) {
 	if (!map.containsKey(key) && (map.size() == capacity)) {
 	    map.remove(map.keySet().iterator().next());
 	}
-	map.remove(key);
 	map.put(key, value);
     }
     
