@@ -1,12 +1,4 @@
 package algorithm.leetcode._146_LRUCache;
-
-import static org.junit.Assert.*;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import org.junit.Test;
-
 /**
  * Design and implement a data structure for Least Recently Used (LRU) cache. It
  * should support the following operations: get and set.
@@ -19,12 +11,17 @@ import org.junit.Test;
  *http://www.javaspecialists.eu/archive/Issue073.html
  */
 
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 public class LRUCache {
     private Map<Integer, Integer> map;
     private int capacity;
     
     public LRUCache(int capacity) {
-	map=new LinkedHashMap<Integer, Integer>(capacity, 1, true);
+	map=new LinkedHashMap<Integer, Integer>(capacity, 1, true); //set access order to true
 	this.capacity = capacity;
     }
     
@@ -39,6 +36,7 @@ public class LRUCache {
 	}
 	map.put(key, value);
     }
+
     
     @Test
     public void test2() {
