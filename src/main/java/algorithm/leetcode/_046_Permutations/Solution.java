@@ -25,6 +25,9 @@ public class Solution {
 	return null;
     }
 
+	
+	
+	
 	@Test
 	public void test1() {
 		assertEquals(6, permute(new int[] { 1, 2, 3 }).size());
