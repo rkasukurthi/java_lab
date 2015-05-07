@@ -1,11 +1,6 @@
 package algorithm.leetcode._005_LPS;
 
-import static org.junit.Assert.*;
-
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -14,27 +9,60 @@ import org.junit.Test;
  * that the maximum length of S is 1000, and there exists one unique longest
  * palindromic substring.
  * http://www.geeksforgeeks.org/dynamic-programming-set-12
+ * 
  * -longest-palindromic-subsequence/
  * 
  * @author zluo
  *
  */
 public class Solution {
+	
+		    private int maxLength = 1;
+		    private int maxIndex = 0;
+		    char[] sa;
+		    int length;
+		    public String longestPalindrome(String str) { //O(N^2), space O(1)
+		        length = str.length();
+		        sa=str.toCharArray();
+		        for (int i=0; i<length; i++) {
+		            // find longest odd palindrome with center i
+		            findPalindrome(i, 0);
+		            // find longest even palindrome with center i
+		            findPalindrome(i, 1);
+		        }
+		        return str.substring(maxIndex, maxIndex+maxLength);
+		    }
+
+		    private void findPalindrome( int i, int shift) {
+		      int left = i;
+		      int right= i+shift;
+		      while (left >= 0 && right < length && sa[left] == sa[right]) {
+		        if ((right - left + 1) > maxLength) {
+		          maxLength = right - left + 1;
+		          maxIndex = left;
+		        }
+		        left--;
+		        right++;
+		    }
+		   }
+
+	
+	
     int[][] mapi;
     int[][] mapj;
-    public String longestPalindrome(String s) {
+    public String longestPalindrome1(String s) {
 	mapi = new int[s.length()][s.length()];
 	mapj = new int[s.length()][s.length()];
-	
-	lps(s, 0, s.length() - 1);
+	sa = s.toCharArray();
+	lps(0, s.length() - 1);
 	return s.substring(mapi[0][s.length() - 1],mapj[0][s.length() - 1]);
     }
     
     /** SubString Range **/
-    void lps(String s, int i, int j) {
+    void lps( int i, int j) {
 	if (mapi[i][j] !=0) return;
 	int i0 = i, j0 = j;
-	while (s.charAt(i) == s.charAt(j)) {
+	while (sa[i] == sa[j]) {
 	    if (i == j || i + 1 == j) {
 		mapi[i0][j0] = i0;
 		mapj[i0][j0] = j0+1;
@@ -44,8 +72,8 @@ public class Solution {
 	    --j;
 	}
 	
-	lps(s, i0, j0 - 1);
-	lps(s, i0 + 1, j0);
+	lps(i0, j0 - 1);
+	lps(i0 + 1, j0);
 	
 	if (mapj[i0][j0 - 1]-mapi[i0][j0 - 1] > mapj[i0+1][j0]-mapi[i0+1][j0]) {
 	    mapi[i0][j0]=mapi[i0][j0 - 1];
