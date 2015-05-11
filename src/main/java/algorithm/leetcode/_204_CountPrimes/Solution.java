@@ -13,32 +13,6 @@ import org.junit.Test;
  */
 public class Solution {
  
- public int countPrimes1(int n) {
-     int num=0;
-     if (n>2) num= 1;
-     if (n>3) num= 2;
-     if (n>5) num= 3;
-     int i=1;
-     while (i<n){
-	 if (!((i%2==0) ||(i%3==0) ||(i%5==0))) {
-	     if (isPrime(i)) num ++;
-	 }
-	 i++;
-     }
-    return num;
- }
- 
- boolean isPrime(int n){
-    int n1=(int)Math.sqrt(n);
-    if (n==n1*n1) return false;
-    int i=1;
-    while(i < n1){
-	i+=6;
-	if ((n%i==0)&& (n!=i)) return false;
-    }
-    return true;
- }
- 
  public int countPrimes(int n) {
      BitSet bs = new BitSet(n);
      bs.set(0); bs.set(1);
