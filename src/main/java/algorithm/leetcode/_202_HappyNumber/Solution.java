@@ -1,5 +1,9 @@
 package algorithm.leetcode._202_HappyNumber;
 
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 /**
  * Write an algorithm to determine if a number is "happy".
  * 
@@ -22,9 +26,36 @@ public class Solution {
      * 
      */
     public boolean isHappy(int n) {
+	int slow=n, fast=n;
+	slow =convert(slow);
+	fast =convert(fast);
+	fast =convert(fast);
+	if (fast==1) return true;
+
+	while (slow !=fast){
+	    fast = convert(fast);
+	    if (fast==1) return true;
+	    fast  = convert(fast);
+	    if (fast==1) return true;
+	    slow =convert(slow);
+	}
 	return false;
     }
     
+    private int convert(int n) {
+	int sum=0,n1=0;
+	while (n >= 10) {
+	    n1=n%10;
+	    sum +=n1*n1;
+	    n=n/10;
+	}
+	sum +=n*n;
+	return sum;
+    }
     
+    @Test
+    public void test() {
+	assertTrue(isHappy(19));
+    }
     
 }
