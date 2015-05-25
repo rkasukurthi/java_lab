@@ -28,7 +28,7 @@ public class Solution {
     
 	public void permute(int[] nums, int index){
 		if (index== len){
-			System.out.println("-------------------------------" + Arrays.toString(nums));
+//			System.out.println("-------------------------------" + Arrays.toString(nums));
 			List<Integer> list = new ArrayList<Integer>();
 			for(int i:nums){
 				list.add(i);
@@ -47,7 +47,7 @@ public class Solution {
 		int t=nums[i];
 		nums[i]=nums[j];
 		nums[j]=t;
-		System.out.println("i= " + i + " j= " +j + " " + Arrays.toString(nums));
+//		System.out.println("i= " + i + " j= " +j + " " + Arrays.toString(nums));
 	}
 	
 	
