@@ -92,10 +92,10 @@ public class Solution {
   }
   
   void find(int i, int j, TrieNode parent, char[][] board, int[][] history) {
-    if (i<0 || j<0 || i>=history.length ||j>=history[0].length ||history[i][j]==1) return;
-    history[i][j]=1;
+    if (i<0 || j<0 || i>=history.length ||j>=history[0].length || history[i][j]==1) return;
     TrieNode node =parent.getNode(board[i][j]);
     if (node==null) return;
+    history[i][j]=1;
     if (node.isWord) {
       addResult(node);
     }
@@ -103,6 +103,7 @@ public class Solution {
     find(i+1,j,node,board,history);
     find(i,j-1,node,board,history);
     find(i,j+1,node,board,history);
+    history[i][j]=0;
   }
   
   void addResult(TrieNode node) {
@@ -139,4 +140,12 @@ public class Solution {
   public void test4() {
     assertEquals(1, findWords(new char[][] {{'a','b'},{'c','d'}}, new String[] {"cdba"}).size());
   }
+/*  @Test
+  public void test5() {
+      
+      String[] input ={"baabab","abaaaa","abaaab","ababba","aabbab","aabbba","aabaab"};
+      String[] words ={"bbaabaabaaaaabaababaaaaababb","aabbaaabaaabaabaaaaaabbaaaba","babaababbbbbbbaabaababaabaaa","bbbaaabaabbaaababababbbbbaaa","babbabbbbaabbabaaaaaabbbaaab","bbbababbbbbbbababbabbbbbabaa","babababbababaabbbbabbbbabbba","abbbbbbaabaaabaaababaabbabba","aabaabababbbbbbababbbababbaa","aabbbbabbaababaaaabababbaaba","ababaababaaabbabbaabbaabbaba","abaabbbaaaaababbbaaaaabbbaab","aabbabaabaabbabababaaabbbaab","baaabaaaabbabaaabaabababaaaa","aaabbabaaaababbabbaabbaabbaa","aaabaaaaabaabbabaabbbbaabaaa","abbaabbaaaabbaababababbaabbb","baabaababbbbaaaabaaabbababbb","aabaababbaababbaaabaabababab","abbaaabbaabaabaabbbbaabbbbbb","aaababaabbaaabbbaaabbabbabab","bbababbbabbbbabbbbabbbbbabaa","abbbaabbbaaababbbababbababba","bbbbbbbabbbababbabaabababaab","aaaababaabbbbabaaaaabaaaaabb","bbaaabbbbabbaaabbaabbabbaaba","aabaabbbbaabaabbabaabababaaa","abbababbbaababaabbababababbb","aabbbabbaaaababbbbabbababbbb","babbbaabababbbbbbbbbaabbabaa"};
+      
+      assertEquals(1, findWords());
+  }*/
 }
