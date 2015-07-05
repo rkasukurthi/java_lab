@@ -10,12 +10,12 @@ import algorithm.leetcode.ListNode;
 public class Solution {
 	public ListNode insertionSortList(ListNode head) {
 		ListNode sortedHead = new ListNode(-1);
-		ListNode cur =new ListNode(-1);
+		ListNode node ;
 		while(head !=null){
-			cur= head;
+		    node= head;
 			head=head.next;
-			cur.next=null;
-			insert(cur, sortedHead);
+			node.next=null;   // fetch one node from list.
+			insert(node, sortedHead);
 		}
 		return sortedHead.next;
 	}
