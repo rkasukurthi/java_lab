@@ -1,1 +1,1 @@
-cd C:\src\java_lab
+cd C:\src\esep51\trunk\eSignEntrepriseBuild\aws-all\aws-library

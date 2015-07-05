@@ -3,6 +3,7 @@ package algorithm.leetcode._210_CourseScheduleII;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -47,11 +48,14 @@ public class Solution {
 	int[] a = new int[numCourses];
 	
 	for (int i = 0; i < numCourses; i++) {
-	    adjs.add(new ArrayList());
+	    adjs.add(new ArrayList<Integer>());
 	}
+	
+	
 	for (int[] edge : prerequisites) {
 	    adjs.get(edge[1]).add(edge[0]);
 	}
+	
 	visited = new boolean[numCourses];
 	onStack = new boolean[numCourses];
 	for (int i = 0; i < adjs.size(); i++) {
@@ -86,7 +90,9 @@ public class Solution {
     
     @Test
     public void test2() {
-	assertEquals(4, findOrder(4, new int[][] { { 1, 0 }, { 2, 0 }, { 3, 1 }, { 3, 2 } }).length);
+	int[] orders =findOrder(4, new int[][] { { 1, 0 }, { 2, 0 }, { 3, 1 }, { 3, 2 } });
+	System.out.println(Arrays.toString(orders));
+	assertEquals(4, orders.length);
     }
     
     @Test
