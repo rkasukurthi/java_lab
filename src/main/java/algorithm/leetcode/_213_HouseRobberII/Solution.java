@@ -14,6 +14,24 @@ Given a list of non-negative integers representing the amount of money of each h
  * 
  */
 public class Solution {
+  int cache[];
+  public int rob(int[] num) {
+    if ((num==null) ||num.length==0) return 0; 
+    if (num.length==1) return num[0];
+    return Math.max(_rob(Arrays.copyOfRange(num, 0, num.length-1)), _rob(Arrays.copyOfRange(num, 1, num.length)));
+  }
+  public int _rob(int[] num) {
+      cache = new int[num.length];
+      Arrays.fill(cache, -1);  //init cache
+      return maxRob(0, num);
+  }
+
+  private int maxRob(int i, int[] num) {
+    if (i >= num.length) return 0;
+    if (cache[i]!=-1) return cache[i];
+    return cache[i]= Math.max(num[i] +maxRob(i + 2, num), maxRob(i+1, num));
+  }
+
   public int rob1(int[] num) {
     if (num == null) return 0;
     int i = 0;
