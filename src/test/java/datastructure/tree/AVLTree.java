@@ -1,5 +1,5 @@
 package datastructure.tree;
 
-public class TreeNode {
-
+public class AVLTree {
+    
 }

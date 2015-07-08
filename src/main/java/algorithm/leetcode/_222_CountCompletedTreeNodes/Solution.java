@@ -25,12 +25,40 @@ public class Solution {
     }
     
    public void count(TreeNode node){
+       if (node==null) return;
+       if (node.left==null && node.right==null){
+	   count++;
+	   return;
+       }
+       int leftHeight= height(node.left);
+       int rightHeight= height(node.right);
+       
+       if (leftHeight==rightHeight){
+	   count += 1 << leftHeight;
+	   count(node.right);
+       }else{
+	   count += 1 << rightHeight;
+	   count(node.left);
+       }
+   }
+   
+   public int height(TreeNode node){
+       int height=0;
+       while (node !=null){
+	   node=node.left;
+	   height++;
+       }
+       return height;
+   }
+   
+   public void count1(TreeNode node){
        if (node !=null){
 	   count++;
 	   count(node.left);
 	   count(node.right);
        }
    }
+   
     @Test
     public void test1() {
 	TreeNode root = new TreeNode(1);
